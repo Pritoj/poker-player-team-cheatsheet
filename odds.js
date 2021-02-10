@@ -2,6 +2,12 @@ const { calculateEquity } = require('poker-odds')
 const { getCards, getOurPlayer, getOtherPlayers } = require('./hand -strength-calc');
 
 // https://en.wikipedia.org/wiki/Poker_probability
+var NodeTtl = require( "node-ttl" );
+
+var ttl = new NodeTtl({
+  ttl: 60
+});
+
 const totalPossibilities = 2598960;
 const prob = (possib) => (1 - (possib / totalPossibilities))
 const multipliers = {
@@ -16,6 +22,18 @@ const multipliers = {
   "straight flush": prob(36),
   "royal flush": prob(4)
 }
+
+const memoizedEquity = (ourCards,board, iterations) => {
+  const key = `${ourCards.sort().join()}-${board.sort().join()}`;
+  const memoizedVal = ttl.get(key)
+  if(memoizedVal) {
+    return memoizedVal;
+  }
+  const res = calculateEquity([ourCards], board, totalIterations);
+  ttl.push(key, res);
+  return res;
+}
+
 const strength = (gameState) => {
   const totalIterations = 1000;
 

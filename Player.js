@@ -12,15 +12,15 @@ class Player {
       amountToCall } = calcPotOdds(gameState);
 
     if (strengthofhand > 0.01) {
-      if (strengthofhand > 0.3) {
+      if (strengthofhand > 0.4) {
         const ourPlayer = getOurPlayer(gameState);
         bet(ourPlayer.stack)
       }
-      if (gameState.bet_index > 20) {
+      if (gameState.bet_index > 20 && strengthofhand > 0.1) {
         return bet(gameState.current_buy_in)
       }
 
-      return bet(gameState.current_buy_in * (1 + strengthofhand));
+      // return bet(gameState.current_buy_in * (1 + strengthofhand));
     }
 
     bet(0);
