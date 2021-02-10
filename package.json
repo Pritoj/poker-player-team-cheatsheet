@@ -13,6 +13,7 @@
     "body-parser": "1.15.2",
     "express": "4.x",
     "jest": "^26.6.3",
+    "poker-odds": "^1.0.1",
     "poker-odds-calculator": "^0.3.1"
   }
 }

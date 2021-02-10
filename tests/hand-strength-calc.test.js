@@ -10,5 +10,6 @@ describe('Card group', () => {
 
   it("should return our player", () => {
     expect(getOurPlayer(mockGameState).id).toBe(1)
+    console.log(getOdds(mockGameState));
   })
 });

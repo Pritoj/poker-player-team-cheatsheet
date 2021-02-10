@@ -1,5 +1,5 @@
 const { calcPotOdds } = require("./util");
-const { getOdds } = require('./hand -strength-calc');
+const { strength } = require("./odds");
 class Player {
   static get VERSION() {
     return "0.1";
@@ -7,12 +7,12 @@ class Player {
 
   static betRequest(gameState, bet) {
     try {
-      const oddsCalc = getOdds(gameState);
+      const odds = strength(gameState);
       const { podOdds,
         amountToCall } = calcPotOdds(gameState);
 
       if (podOdds < 0.5) {
-        return bet(amountToCall * (1 + oddsCalc));
+        return bet(amountToCall * (1 + odds));
       }
 
       bet(0);

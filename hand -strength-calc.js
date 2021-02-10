@@ -1,8 +1,9 @@
 const { CardGroup, OddsCalculator } = require("poker-odds-calculator")
 
+const getCards = (playerCards) => playerCards.map(card => card.rank + card.suit[0])
 const getCardGroup = (playerCards) => {
-  const str = playerCards.map(card => card.rank + card.suit[0]).join();
-  return CardGroup.fromString(str)
+  const str = getCards(playerCards).join();
+  return CardGroup.fromString(str);
 }
 
 const getOurPlayer = (gameState) => {
@@ -18,7 +19,7 @@ const getOdds = (gameState) => {
   // const otherPlayerCards = getOtherPlayers(gameState).map(player => getCardGroup(player.hole_cards));
   const boardCards = getCardGroup(gameState.community_cards);
 
-  const result = OddsCalculator.calculate([ourCards], boardCards);
+  const result = OddsCalculator.calculate([ourCards,], boardCards);
   return result.equities[0].getEquity();
 }
 
@@ -27,5 +28,6 @@ module.exports = {
   getCardGroup,
   getOurPlayer,
   getOtherPlayers,
-  getOdds
+  getOdds,
+  getCards
 }
