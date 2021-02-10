@@ -21,7 +21,7 @@ class Player {
           return bet(gameState.current_buy_in)
         }
 
-        return bet(amountToCall * (1 + strengthofhand));
+        return bet(gameState.current_buy_in * (1 + strengthofhand));
       }
 
       bet(0);
