@@ -12,8 +12,8 @@ class Player {
       const { potOdds,
         amountToCall } = calcPotOdds(gameState);
 
-      if (Math.pow(potOdds, 2) < strengthofhand) {
-        if (strengthofhand > 0.2) {
+      if (Math.pow(potOdds, 4) < strengthofhand) {
+        if (strengthofhand > 0.05) {
           const ourPlayer = getOurPlayer(gameState);
           bet(ourPlayer.stack)
         }
