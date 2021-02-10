@@ -4,6 +4,6 @@ const { mockGameState } = require('./mocks');
 const Player = require('../Player');
 describe('Poker odds', () => {
   it('does something', () => {
-    Player.betRequest(mockGameState, console.log)
+    expect(() => Player.betRequest(mockGameState, console.log)).not.toThrow()
   })
 });
