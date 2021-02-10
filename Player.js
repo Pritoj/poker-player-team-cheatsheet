@@ -8,12 +8,11 @@ class Player {
   static betRequest(gameState, bet) {
     try {
       const oddsCalc = getOdds(gameState);
-      console.log({oddsCalc});
       const { podOdds,
         amountToCall } = calcPotOdds(gameState);
 
       if (podOdds < 0.5) {
-        return bet(amountToCall);
+        return bet(amountToCall * (1 + oddsCalc));
       }
 
       bet(0);

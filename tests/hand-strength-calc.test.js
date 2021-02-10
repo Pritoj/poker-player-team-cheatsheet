@@ -1,5 +1,5 @@
 const { CardGroup } = require("poker-odds-calculator");
-const { getCardGroup, getOurPlayer} = require("../hand -strength-calc");
+const { getCardGroup, getOurPlayer, getOtherPlayers, getOdds } = require("../hand -strength-calc");
 const { mockPlayer, mockGameState } = require("./mocks");
 
 describe('Card group', () => {
