@@ -17,7 +17,7 @@ const multipliers = {
   "royal flush": prob(4)
 }
 const strength = (gameState) => {
-  const totalIterations = 10000;
+  const totalIterations = 1000;
 
   const ourCards = getCards(getOurPlayer(gameState).hole_cards);
   const totalPlayers = getOtherPlayers(gameState).length + 1;
