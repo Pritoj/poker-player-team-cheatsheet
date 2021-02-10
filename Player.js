@@ -8,19 +8,23 @@ class Player {
 
   static betRequest(gameState, bet) {
     const strengthofhand = strength(gameState);
-    const { potOdds,
-      amountToCall } = calcPotOdds(gameState);
+    const { potOdds } = calcPotOdds(gameState);
 
-    if (strengthofhand > 0.01) {
-      if (strengthofhand > 0.4) {
-        const ourPlayer = getOurPlayer(gameState);
-        bet(ourPlayer.stack)
-      }
-      if (gameState.bet_index > 20 && strengthofhand > 0.1) {
+
+    if (gameState.bet_index > 20) {
+      if (strengthofhand > 0.1 || potOdds < 0.5) {
         return bet(gameState.current_buy_in)
       }
+      return bet(0)
+    }
 
-      // return bet(gameState.current_buy_in * (1 + strengthofhand));
+    if (strengthofhand > 0.51) {
+      if (strengthofhand > 0.4) {
+        const ourPlayer = getOurPlayer(gameState);
+        return bet(ourPlayer.stack)
+      }
+
+      return bet(gameState.current_buy_in * (1 + potOdds))
     }
 
     bet(0);
