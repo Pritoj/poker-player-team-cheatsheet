@@ -18,7 +18,7 @@ class Player {
       return bet(0)
     }
 
-    if (strengthofhand > 0.51) {
+    if (strengthofhand > 0.1) {
       if (strengthofhand > 0.4) {
         const ourPlayer = getOurPlayer(gameState);
         return bet(ourPlayer.stack)
