@@ -24,7 +24,7 @@ const strength = (gameState) => {
   const board = getCards(gameState.community_cards);
   const res = calculateEquity([ourCards], board, totalIterations);
   return res[0].handChances
-    .map(hit => Math.pow(multipliers[hit.name], 1 / totalPlayers) * (hit.count / totalIterations))
+    .map(hit => Math.pow(multipliers[hit.name], totalPlayers) * (hit.count / totalIterations))
     .reduce((f, v) => f + v);
 }
 
