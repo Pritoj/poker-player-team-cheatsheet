@@ -5,9 +5,14 @@
   "engines": {
     "node": "6.x"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "private": true,
   "dependencies": {
+    "body-parser": "1.15.2",
     "express": "4.x",
-    "body-parser": "1.15.2"
+    "jest": "^26.6.3",
+    "poker-odds-calculator": "^0.3.1"
   }
 }
