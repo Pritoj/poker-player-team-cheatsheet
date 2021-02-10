@@ -19,11 +19,11 @@ app.post('/', (req, res) => {
     case 'bet_request':
       try {
         Player.betRequest(JSON.parse(game_state), function (bet) {
-          res.json({ bet: Math.ceil(bet) });
+          res.json(Math.ceil(bet));
         });
       }
       catch (e) {
-        res.json({ bet: 0 })
+        res.json(0)
       }
       break;
     case 'showdown':
