@@ -7,12 +7,16 @@ class Player {
 
   static betRequest(gameState, bet) {
     try {
-      const odds = strength(gameState);
-      const { podOdds,
+      const strengthofhand = strength(gameState);
+      const { potOdds,
         amountToCall } = calcPotOdds(gameState);
 
-      if (podOdds < 0.5) {
-        return bet(amountToCall * (1 + odds));
+      if (potOdds < strengthofhand) {
+        if (bet_index > 20) {
+          return bet(gameState.current_buy_in)
+        }
+        
+        return bet(amountToCall * (1 + strengthofhand));
       }
 
       bet(0);
