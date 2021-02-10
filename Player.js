@@ -6,14 +6,18 @@ class Player {
   }
 
   static betRequest(gameState, bet) {
-    const podOdds,
-      amountToCall = calcPotOdds(gameState);
+    try {
+      const podOdds,
+        amountToCall = calcPotOdds(gameState);
 
-    if (podOdds < 0.5) {
-      bet(amountToCall);
+      if (podOdds < 0.5) {
+        bet(amountToCall);
+      }
+
+      bet(0);
+    } catch (e) {
+      bet(0);
     }
-
-    bet(0);
   }
 
   static showdown(gameState) {}
