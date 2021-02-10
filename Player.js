@@ -1,4 +1,4 @@
-import { calcPotOdds } from "util";
+const { calcPotOdds } = require("./util");
 
 class Player {
   static get VERSION() {
@@ -7,8 +7,8 @@ class Player {
 
   static betRequest(gameState, bet) {
     try {
-      const podOdds,
-        amountToCall = calcPotOdds(gameState);
+      const { podOdds,
+        amountToCall } = calcPotOdds(gameState);
 
       if (podOdds < 0.5) {
         return bet(amountToCall);
