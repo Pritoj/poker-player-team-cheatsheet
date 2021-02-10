@@ -11,7 +11,7 @@ class Player {
         amountToCall = calcPotOdds(gameState);
 
       if (podOdds < 0.5) {
-        bet(amountToCall);
+        return bet(amountToCall);
       }
 
       bet(0);
@@ -20,7 +20,7 @@ class Player {
     }
   }
 
-  static showdown(gameState) {}
+  static showdown(gameState) { }
 }
 
 module.exports = Player;
