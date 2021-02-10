@@ -3,7 +3,7 @@ const { getCards, getOurPlayer, getOtherPlayers } = require('./hand -strength-ca
 
 // https://en.wikipedia.org/wiki/Poker_probability
 const totalPossibilities = 2598960;
-const prob = (possib) => 1 - (possib / totalPossibilities)
+const prob = (possib) => (1 - (possib / totalPossibilities))
 const multipliers = {
   "high card": prob(1302540),
   "one pair": prob(1098240),
@@ -22,6 +22,7 @@ const strength = (gameState) => {
   const ourCards = getCards(getOurPlayer(gameState).hole_cards);
   const totalPlayers = getOtherPlayers(gameState).length + 1;
   const board = getCards(gameState.community_cards);
+  
   const res = calculateEquity([ourCards], board, totalIterations);
   return res[0].handChances
     .map(hit => Math.pow(multipliers[hit.name], totalPlayers) * (hit.count / totalIterations))

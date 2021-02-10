@@ -12,12 +12,12 @@ class Player {
       const { potOdds,
         amountToCall } = calcPotOdds(gameState);
 
-      if ( strengthofhand > 0.001) {
-        if (strengthofhand > 0.05) {
+      if (strengthofhand > 0.01) {
+        if (strengthofhand > 0.3) {
           const ourPlayer = getOurPlayer(gameState);
           bet(ourPlayer.stack)
         }
-        if (bet_index > 20) {
+        if (gameState.bet_index > 20) {
           return bet(gameState.current_buy_in)
         }
 
@@ -26,6 +26,7 @@ class Player {
 
       bet(0);
     } catch (e) {
+      console.log(e);
       bet(0);
     }
   }
